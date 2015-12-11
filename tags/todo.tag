@@ -2,10 +2,10 @@
     <h3>{ opts.title }</h3>
     <ul>
       <li each={ items }>
-        <label class={ completed: done }>
-          <input type="checkbox" checked={ done } onclick={ parent.toggle }> { title }
-        </label>
-        <a href="#" onclick={ remove }>X</a>
+	    	<label class={ completed: done }>
+	          <input type="checkbox" checked={ done } onclick={ parent.toggle }>{ title }
+	        </label>
+	        <a href="#" onclick={ parent.remove }>X</a>
       </li>
     </ul>
 
