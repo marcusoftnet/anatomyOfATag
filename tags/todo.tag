@@ -1,11 +1,9 @@
 <todo>
     <h3>{ opts.title }</h3>
+
     <ul>
-      <li each={ items }>
-	    	<label class={ completed: done }>
-	          <input type="checkbox" checked={ done } onclick={ parent.toggle }>{ title }
-	        </label>
-	        <a href="#" onclick={ parent.remove }>X</a>
+      <li each={ item, i in items }>
+		   <todo-item todo_item="{ item }" />
       </li>
     </ul>
 
@@ -17,15 +15,9 @@
 
     this.items = opts.items
     
-    toggle(e) {
-      var item = e.item
-      item.done = !item.done
-      return true
-    }
-
-    remove(e){
-      var item = e.item
+    remove(item){
       this.items.splice(this.items.indexOf(item), 1)
+      this.update()
     }
 
 	add(itemText) {
@@ -37,6 +29,28 @@
         console.log("Tag mounted")
     })
 </todo>
+
+<todo-item>
+	<label class={ completed: todo_item.done }>
+		<input type="checkbox" checked={ todo_item.done } onclick={ parent.toggle }>
+		{ todo_item.title }
+	</label>
+	<a href="#" onclick={ parent.remove }>X</a>
+
+	this.todo_item = opts.todo_item
+	var parent = this.parent
+
+    toggle(e) {
+      var item = e.item
+      item.done = !item.done
+      return true
+    }
+
+    remove(e){
+      var item = e.item
+      parent.remove(item)
+    }
+</todo-item>
 
 <todo-form>
 	<form onsubmit={ add }>
