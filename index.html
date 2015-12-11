@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Riot todo</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="todo.css">
+    <script src="riot+compiler.min.js"></script>
+  </head>
+  <body>
+    <todo title="Stuff to do"></todo>
+
+    <script src="tags/todo.tag" type="riot/tag"></script>
+    <script>
+    riot.mount('todo', {
+      title: 'I want to behave!',
+      items: [
+        { title: 'Avoid excessive coffeine', done: true },
+        { title: 'Hidden item',  hidden: true },
+        { title: 'Be less provocative'  },
+        { title: 'Be nice to people' }
+      ]
+    })
+    </script>
+
+    <style type="riot"></style>
+    
+  </body>
+</html>
